@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: var(--gray);
+}
+
+button {
+  cursor: pointer;
+}
+
+button, input {
+  padding: 0.25em 0.5em;
+  font-size: 0.9em;
+  line-height: 1.1em;
+  border-radius: 5px;
+  outline: none;
+  border: var(--gray) 1px solid;
+  background: var(--gray-light);
+  color: var(--gray-dark);
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen .toolbar {
+  position: absolute;
+}
+
+.screen .toolbar.white {
+  left: 0;
+}
+
+.screen .toolbar.black {
+  right: 0;
+}
+
+.screen .toolbar.black button {
+  background: var(--gray-dark);
+}
+
+.form {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  gap: 0.7em;
+  border-radius: 3px;
+  background: var(--gray-dark);
+  color: var(--gray-light);
+}
+
+.form * {
+  font-size: 0.9em;
+  line-height: 1.1em;
+  align-self: center;
+}
+
+.form hr {
+  justify-self: center;
+  width: 90%;
+  border: none;
+  border-top: var(--gray-light) 1px solid;
+}
+
+.col-1 {
+  grid-column: span 1;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+.col-3 {
+  grid-column: span 3;
+}
+
+.board, .board-row {
+  display: grid;
+  gap: 0.1em;
+}
+
+.board {
+  grid-template-rows: repeat(8, 50px);
+}
+
+.board-row {
+  grid-template-columns: repeat(8, 50px);
+}
+
+.board-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #8569ae;
+  border-radius: 5px;
+}
+
+.board-row:nth-child(odd) .board-cell:nth-child(even),
+.board-row:nth-child(even) .board-cell:nth-child(odd) {
+  background: #3f235b;
+}
+
+.game-piece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: grab;
+}
+
+.game-piece.black {
+  background: var(--gray-dark);
+}
+
+.game-piece.white {
+  background: var(--gray-light);
+}
+
+.game-piece.drag {
+  cursor: grabbing;
+}
+
+.game-piece * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  line-height: 0;
+}
